@@ -1,18 +1,22 @@
 export default class Projects {
-  constructor() {
-    if (this instanceof Projects) {
-      throw new Error('A static class cannot be instantiated');
-    }
-  }
-
   static _projects = [];
+
+  static _currentProjectIndex = null;
 
   static get projects() {
     return this._projects;
   }
 
+  static set currentProjectIndex(projectIndex) {
+    this._currentProjectIndex = projectIndex;
+  }
+
   static addProject(project) {
     this._projects.push(project);
+  }
+
+  static getCurrentProject() {
+    return this._projects[this._currentProjectIndex];
   }
 
   static deleteProject(projectIndex) {
