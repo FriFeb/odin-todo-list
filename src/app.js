@@ -21,6 +21,7 @@ export default class App {
   // User can change any project title, so we should not use Projects.getCurrentProject()
   static setProjectTitle(title, projectIndex) {
     const currentProject = Projects.projects[projectIndex];
+    if (!currentProject) return;
     currentProject.title = title;
   }
 
@@ -47,12 +48,14 @@ export default class App {
   static setTaskTitle(title, taskIndex) {
     const currentProject = Projects.getCurrentProject();
     const currentTask = currentProject.tasks[taskIndex];
+    if (!currentTask) return;
     currentTask.title = title;
   }
 
   static setTaskDescription(description, taskIndex) {
     const currentProject = Projects.getCurrentProject();
     const currentTask = currentProject.tasks[taskIndex];
+    if (!currentTask) return;
     currentTask.description = description;
   }
 
