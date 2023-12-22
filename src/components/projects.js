@@ -20,6 +20,6 @@ export default class Projects {
   }
 
   static deleteProject(projectIndex) {
-    delete this._projects[projectIndex];
+    this._projects.splice(projectIndex, 1);
   }
 }

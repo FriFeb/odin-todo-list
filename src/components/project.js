@@ -21,6 +21,6 @@ export default class Project {
   }
 
   deleteTask(taskIndex) {
-    delete this._tasks[taskIndex];
+    this._tasks.splice(taskIndex, 1);
   }
 }
