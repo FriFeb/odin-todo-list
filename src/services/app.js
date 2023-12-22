@@ -1,12 +1,39 @@
-import Projects from './components/projects';
-import Project from './components/project';
-import Task from './components/task';
+import Projects from '../components/projects';
+import Project from '../components/project';
+import Task from '../components/task';
+import Storage from '../repository/storage';
 
 export default class App {
+  static _getStorageProjects() {
+    return JSON.parse(Storage.getItem('Projects'));
+  }
+
+  static _updateStorageProjects() {
+    Storage.setItem('Projects', JSON.stringify(Projects));
+  }
+
+  static fetchStorageProjects() {
+    const storageProjects = this._getStorageProjects();
+
+    Projects.currentProjectIndex = storageProjects._currentProjectIndex;
+
+    storageProjects._projects.forEach((storageProject) => {
+      const project = new Project(storageProject._title);
+
+      storageProject._tasks.forEach((storageTask) => {
+        const task = new Task(storageTask._title, storageTask._description);
+        project.addTask(task);
+      });
+
+      Projects.addProject(project);
+    });
+  }
+
   static createProject(title) {
     const project = new Project(title);
     Projects.addProject(project);
     Projects.currentProjectIndex = Projects.projects.length - 1;
+    this._updateStorageProjects();
   }
 
   static getProjects() {
@@ -23,16 +50,19 @@ export default class App {
     const currentProject = Projects.projects[projectIndex];
     if (!currentProject) return;
     currentProject.title = title;
+    this._updateStorageProjects();
   }
 
   static deleteProject(projectIndex) {
     Projects.deleteProject(projectIndex);
+    this._updateStorageProjects();
   }
 
   static createTask(title, description) {
     const task = new Task(title, description);
     const currentProject = Projects.getCurrentProject();
     currentProject.addTask(task);
+    this._updateStorageProjects();
   }
 
   static getProjectTasks() {
@@ -50,6 +80,7 @@ export default class App {
     const currentTask = currentProject.tasks[taskIndex];
     if (!currentTask) return;
     currentTask.title = title;
+    this._updateStorageProjects();
   }
 
   static setTaskDescription(description, taskIndex) {
@@ -57,10 +88,12 @@ export default class App {
     const currentTask = currentProject.tasks[taskIndex];
     if (!currentTask) return;
     currentTask.description = description;
+    this._updateStorageProjects();
   }
 
   static deleteTask(taskIndex) {
     const currentProject = Projects.getCurrentProject();
     currentProject.deleteTask(taskIndex);
+    this._updateStorageProjects();
   }
 }

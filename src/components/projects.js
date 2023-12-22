@@ -1,25 +1,27 @@
-export default class Projects {
-  static _projects = [];
+class Projects {
+  _projects = [];
 
-  static _currentProjectIndex = null;
+  _currentProjectIndex = null;
 
-  static get projects() {
+  get projects() {
     return this._projects;
   }
 
-  static set currentProjectIndex(projectIndex) {
+  set currentProjectIndex(projectIndex) {
     this._currentProjectIndex = projectIndex;
   }
 
-  static addProject(project) {
+  addProject(project) {
     this._projects.push(project);
   }
 
-  static getCurrentProject() {
+  getCurrentProject() {
     return this._projects[this._currentProjectIndex];
   }
 
-  static deleteProject(projectIndex) {
+  deleteProject(projectIndex) {
     this._projects.splice(projectIndex, 1);
   }
 }
+
+export default new Projects();
