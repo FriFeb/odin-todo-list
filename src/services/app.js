@@ -15,6 +15,8 @@ export default class App {
   static fetchStorageProjects() {
     const storageProjects = this._getStorageProjects();
 
+    if (!storageProjects) return;
+
     Projects.currentProjectIndex = storageProjects._currentProjectIndex;
 
     storageProjects._projects.forEach((storageProject) => {
