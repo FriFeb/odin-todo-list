@@ -20,6 +20,10 @@ export default class Project {
     this._tasks.push(task);
   }
 
+  getTask(taskIndex) {
+    return this._tasks[taskIndex];
+  }
+
   deleteTask(taskIndex) {
     this._tasks.splice(taskIndex, 1);
   }
