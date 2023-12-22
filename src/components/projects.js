@@ -8,6 +8,8 @@ class Projects {
   }
 
   set currentProjectIndex(projectIndex) {
+    // We should CRUD tasks only in existing projects
+    if (projectIndex < 0 || projectIndex >= this._projects.length) return;
     this._currentProjectIndex = projectIndex;
   }
 

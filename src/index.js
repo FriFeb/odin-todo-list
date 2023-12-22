@@ -6,15 +6,15 @@ import App from './services/app';
 // App.createTask('task 2', 'desc');
 
 App.fetchStorageProjects();
-console.log(...App.getProjects());
 
-// App.createProject('3');
-// App.createTask('new');
-// App.createTask('task 2', 'desc');
-// App.setProjectTitle('new', 6);
-// App.getProject(1);
-// App.setTaskTitle('Ultra absolute', 1);
-// App.deleteTask(0);
-// App.deleteProject(2);
+console.log(App.getProject(0));
+console.log(App.getProject(1));
+console.log(App.getProject(2));
+console.log(App.getProject(123));
+console.log(App.getProjectTasks());
+console.log(App.getProjectTask(2));
+App.setTaskTitle('asfsd', 1);
+App.setTaskDescription('asdfasdf', 1);
+App.deleteTask(1);
 
 console.log(...App.getProjects());
