@@ -17,8 +17,6 @@ export default class App {
 
     if (!storageProjects) return;
 
-    Projects.currentProjectIndex = storageProjects._currentProjectIndex;
-
     storageProjects._projects.forEach((storageProject) => {
       const project = new Project(storageProject._title);
 
@@ -29,6 +27,8 @@ export default class App {
 
       Projects.addProject(project);
     });
+
+    Projects.currentProjectIndex = storageProjects._currentProjectIndex;
   }
 
   static createProject(title) {
