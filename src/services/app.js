@@ -79,7 +79,7 @@ export default class App {
 
   static setTaskTitle(title, taskIndex) {
     const currentProject = Projects.getCurrentProject();
-    const currentTask = currentProject.tasks[taskIndex];
+    const currentTask = currentProject.getTask(taskIndex);
     if (!currentTask) return;
     currentTask.title = title;
     this._updateStorageProjects();
@@ -87,7 +87,7 @@ export default class App {
 
   static setTaskDescription(description, taskIndex) {
     const currentProject = Projects.getCurrentProject();
-    const currentTask = currentProject.tasks[taskIndex];
+    const currentTask = currentProject.getTask(taskIndex);
     if (!currentTask) return;
     currentTask.description = description;
     this._updateStorageProjects();
@@ -95,7 +95,7 @@ export default class App {
 
   static setTaskPriority(priority, taskIndex) {
     const currentProject = Projects.getCurrentProject();
-    const currentTask = currentProject.tasks[taskIndex];
+    const currentTask = currentProject.getTask(taskIndex);
     if (!currentTask) return;
     currentTask.priority = priority;
     this._updateStorageProjects();
