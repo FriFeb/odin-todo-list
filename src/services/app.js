@@ -93,6 +93,14 @@ export default class App {
     this._updateStorageProjects();
   }
 
+  static setTaskPriority(priority, taskIndex) {
+    const currentProject = Projects.getCurrentProject();
+    const currentTask = currentProject.tasks[taskIndex];
+    if (!currentTask) return;
+    currentTask.priority = priority;
+    this._updateStorageProjects();
+  }
+
   static deleteTask(taskIndex) {
     const currentProject = Projects.getCurrentProject();
     currentProject.deleteTask(taskIndex);
