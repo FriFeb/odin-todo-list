@@ -12,51 +12,48 @@ export default class App {
     Storage.setItem('Projects', JSON.stringify(Projects));
   }
 
-  static fetchStorageProjects() {
-    const storageProjects = this._getStorageProjects();
+  // static fetchStorageProjects() {
+  //   const storageProjects = this._getStorageProjects();
 
-    if (!storageProjects) return;
+  //   if (!storageProjects) return;
 
-    storageProjects._projects.forEach((storageProject) => {
-      const project = new Project(storageProject._title);
+  //   storageProjects._projects.forEach((storageProject) => {
+  //     const project = new Project(storageProject._title);
 
-      storageProject._tasks.forEach((storageTask) => {
-        const task = new Task(storageTask._title, storageTask._description);
-        project.addTask(task);
-      });
+  //     storageProject._tasks.forEach((storageTask) => {
+  //       const task = new Task(storageTask._title, storageTask._description);
+  //       project.addTask(task);
+  //     });
 
-      Projects.addProject(project);
-    });
+  //     Projects.createProject(project);
+  //   });
 
-    Projects.currentProjectIndex = storageProjects._currentProjectIndex;
-  }
+  //   Projects.currentProjectIndex = storageProjects._currentProjectIndex;
+  // }
 
   static createProject(title) {
-    const project = new Project(title);
-    Projects.addProject(project);
-    Projects.currentProjectIndex = Projects.projects.length - 1;
+    Projects.createProject(title);
+
     this._updateStorageProjects();
   }
 
   static getProjects() {
-    return Projects.projects;
+    return Projects.getProjects();
   }
 
   static getProject(projectIndex) {
-    Projects.currentProjectIndex = projectIndex;
-    return Projects.getCurrentProject();
+    return Projects.getProject(projectIndex);
   }
 
-  // User can change any project title, so we should not use Projects.getCurrentProject()
   static setProjectTitle(title, projectIndex) {
-    const currentProject = Projects.projects[projectIndex];
-    if (!currentProject) return;
-    currentProject.title = title;
+    Projects.setProjectTitle(title, projectIndex);
+
     this._updateStorageProjects();
   }
 
   static deleteProject(projectIndex) {
     Projects.deleteProject(projectIndex);
+
     this._updateStorageProjects();
   }
 
@@ -64,6 +61,7 @@ export default class App {
     const task = new Task(title, description);
     const currentProject = Projects.getCurrentProject();
     currentProject.addTask(task);
+
     this._updateStorageProjects();
   }
 
