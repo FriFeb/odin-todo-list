@@ -1,3 +1,5 @@
+import Task from './task';
+
 export default class Project {
   constructor(title) {
     this._title = title;
@@ -12,16 +14,35 @@ export default class Project {
     return this._title;
   }
 
-  get tasks() {
-    return this._tasks;
+  createTask(title, description, priorityIndex) {
+    const task = new Task(title, description, priorityIndex);
+    this._tasks.push(task);
   }
 
-  addTask(task) {
-    this._tasks.push(task);
+  getTasks() {
+    return this._tasks;
   }
 
   getTask(taskIndex) {
     return this._tasks[taskIndex];
+  }
+
+  _setTaskProperty(property, propertyValue, taskIndex) {
+    const targetTask = this.getTask(taskIndex);
+    if (!targetTask) return;
+    targetTask[property] = propertyValue;
+  }
+
+  setTaskTitle(title, taskIndex) {
+    this._setTaskProperty('title', title, taskIndex);
+  }
+
+  setTaskDescription(description, taskIndex) {
+    this._setTaskProperty('description', description, taskIndex);
+  }
+
+  setTaskPriorityIndex(priorityIndex, taskIndex) {
+    this._setTaskProperty('priorityIndex', priorityIndex, taskIndex);
   }
 
   deleteTask(taskIndex) {

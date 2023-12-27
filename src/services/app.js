@@ -1,40 +1,14 @@
 import Projects from '../components/projects';
 import Project from '../components/project';
 import Task from '../components/task';
-import Storage from '../repository/storage';
+import { updateStorageProjects } from '../middlewares/storage_middleware';
+import * as constants from '../helpers/constants';
 
 export default class App {
-  static _getStorageProjects() {
-    return JSON.parse(Storage.getItem('Projects'));
-  }
-
-  static _updateStorageProjects() {
-    Storage.setItem('Projects', JSON.stringify(Projects));
-  }
-
-  // static fetchStorageProjects() {
-  //   const storageProjects = this._getStorageProjects();
-
-  //   if (!storageProjects) return;
-
-  //   storageProjects._projects.forEach((storageProject) => {
-  //     const project = new Project(storageProject._title);
-
-  //     storageProject._tasks.forEach((storageTask) => {
-  //       const task = new Task(storageTask._title, storageTask._description);
-  //       project.addTask(task);
-  //     });
-
-  //     Projects.createProject(project);
-  //   });
-
-  //   Projects.currentProjectIndex = storageProjects._currentProjectIndex;
-  // }
-
   static createProject(title) {
     Projects.createProject(title);
 
-    this._updateStorageProjects();
+    // updateStorageProjects();
   }
 
   static getProjects() {
@@ -48,26 +22,29 @@ export default class App {
   static setProjectTitle(title, projectIndex) {
     Projects.setProjectTitle(title, projectIndex);
 
-    this._updateStorageProjects();
+    updateStorageProjects();
   }
 
   static deleteProject(projectIndex) {
     Projects.deleteProject(projectIndex);
 
-    this._updateStorageProjects();
+    updateStorageProjects();
   }
 
-  static createTask(title, description) {
-    const task = new Task(title, description);
+  static createTask(
+    title,
+    description = '',
+    priorityIndex = constants.PRIORITY_COUNT - 1
+  ) {
     const currentProject = Projects.getCurrentProject();
-    currentProject.addTask(task);
+    currentProject.createTask(title, description, priorityIndex);
 
-    this._updateStorageProjects();
+    // updateStorageProjects();
   }
 
   static getProjectTasks() {
     const currentProject = Projects.getCurrentProject();
-    return currentProject.tasks;
+    return currentProject.getTasks();
   }
 
   static getProjectTask(taskIndex) {
@@ -77,31 +54,29 @@ export default class App {
 
   static setTaskTitle(title, taskIndex) {
     const currentProject = Projects.getCurrentProject();
-    const currentTask = currentProject.getTask(taskIndex);
-    if (!currentTask) return;
-    currentTask.title = title;
-    this._updateStorageProjects();
+    currentProject.setTaskTitle(title, taskIndex);
+
+    // updateStorageProjects();
   }
 
   static setTaskDescription(description, taskIndex) {
     const currentProject = Projects.getCurrentProject();
-    const currentTask = currentProject.getTask(taskIndex);
-    if (!currentTask) return;
-    currentTask.description = description;
-    this._updateStorageProjects();
+    currentProject.setTaskDescription(description, taskIndex);
+
+    // updateStorageProjects();
   }
 
-  static setTaskPriority(priority, taskIndex) {
+  static setTaskPriorityIndex(priorityIndex, taskIndex) {
     const currentProject = Projects.getCurrentProject();
-    const currentTask = currentProject.getTask(taskIndex);
-    if (!currentTask) return;
-    currentTask.priority = priority;
-    this._updateStorageProjects();
+    currentProject.setTaskPriorityIndex(priorityIndex, taskIndex);
+
+    // updateStorageProjects();
   }
 
   static deleteTask(taskIndex) {
     const currentProject = Projects.getCurrentProject();
     currentProject.deleteTask(taskIndex);
-    this._updateStorageProjects();
+
+    updateStorageProjects();
   }
 }

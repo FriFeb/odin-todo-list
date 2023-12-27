@@ -6,7 +6,6 @@ class Projects {
 
   _setCurrentProjectIndex(projectIndex) {
     // We should CRUD tasks only in existing projects
-    // so it will return a last project
     if (projectIndex >= 0 && projectIndex < this._projects.length) {
       this._currentProjectIndex = projectIndex;
     }

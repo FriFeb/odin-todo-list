@@ -3,14 +3,16 @@ import App from './services/app';
 // App.fetchStorageProjects();
 
 App.createProject('first');
-App.createProject('second');
-App.createProject('third');
+App.createTask('123', '123');
+App.createTask('second');
 
-console.log(...App.getProjects());
-App.setProjectTitle('new title', 0);
-App.setProjectTitle('new', 4);
-console.log(...App.getProjects());
-
-// console.log(App.getProjectTasks());
-// App.setTaskTitle('crazy', 0);
-// App.setTaskPriority(1, 0);
+console.log(...App.getProjectTasks());
+App.setTaskTitle('first', 0);
+App.setTaskDescription('desc', 0);
+App.setTaskPriorityIndex(0, 0);
+console.log(...App.getProjectTasks());
+// App.setTaskDescription('first', 0);
+// App.setTaskPriorityIndex(5, 0);
+// console.log(App.getProjectTask(0));
+// App.deleteTask(0);
+// console.log(...App.getProjectTasks());

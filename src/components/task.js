@@ -1,16 +1,15 @@
 import * as constants from '../helpers/constants';
 
 export default class Task {
-  constructor(
-    title,
-    description = '',
-    priorityIndex = constants.PRIORITY_COUNT - 1
-  ) {
+  constructor(title, description, priorityIndex) {
     this._title = title;
     this._description = description;
     this._priorities = constants.PRIORITIES;
     this._priorityIndex = priorityIndex;
-    this._priority = this._priorities[this._priorityIndex];
+
+    if (priorityIndex < 0 || priorityIndex > constants.PRIORITY_COUNT - 1) {
+      this._priorityIndex = constants.PRIORITY_COUNT - 1;
+    }
   }
 
   set title(title) {
@@ -33,6 +32,10 @@ export default class Task {
     if (priorityIndex >= 0 && priorityIndex <= constants.PRIORITY_COUNT - 1) {
       this._priorityIndex = priorityIndex;
     }
+  }
+
+  get priorities() {
+    return this._priorities;
   }
 
   get priority() {
