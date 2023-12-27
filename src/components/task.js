@@ -1,9 +1,12 @@
+import * as constants from '../helpers/constants';
+
 export default class Task {
-  constructor(title, description, priority = 3) {
+  constructor(title, description) {
     this._title = title;
     this._description = description;
-    this._priorities = [1, 2, 3, 4];
-    this._priority = this._priorities[priority];
+    this._priorities = constants.PRIORITIES;
+    this._priorityIndex = constants.PRIORITY_COUNT - 1;
+    this._priority = this._priorities[this._priorityIndex];
   }
 
   set title(title) {
@@ -22,12 +25,13 @@ export default class Task {
     return this._description;
   }
 
-  set priority(priority) {
-    if (isNaN(priority) || priority < 0 || priority > 3) return;
-    this._priority = this._priorities[priority];
+  set priorityIndex(priorityIndex) {
+    if (priorityIndex >= 0 && priorityIndex <= constants.PRIORITY_COUNT - 1) {
+      this._priorityIndex = priorityIndex;
+    }
   }
 
   get priority() {
-    return this._priority;
+    return this._priority[this._priorityIndex];
   }
 }
