@@ -1,5 +1,3 @@
-import App from './services/app';
+import { renderProjectsPage } from './DOM/components/projects';
 
-App.fetchProjects();
-console.log(...App.getProjects());
-console.log(...App.getCurrentProjectTasks());
+renderProjectsPage();
