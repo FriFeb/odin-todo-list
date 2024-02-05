@@ -33,15 +33,21 @@ function appendHTML() {
   + title
   + id of a project as an index in the Projects obj
   + read (icon that opens tasks)
-  - update (edit icon that allows to edit proj title)
-  - delete (x icon that deletes proj)
+  + update (edit icon that allows to edit proj title)
+  + delete (x icon that deletes proj)
   - onClick Read Update Delete events 
 */
 function createDOMProjectElement(name, id) {
   return `<div class='row'>
       <div class="col">${name}</div>
-      <div id='${id}' class="col-1">
+      <div id='${id}' class="col-auto">
         <i class="bi bi-box-arrow-in-right"></i>
+      </div>
+      <div class="col-auto">
+        <i class="bi bi-pencil"></i>
+      </div>
+      <div class="col-auto">
+        <i class="bi bi-trash3"></i>
       </div>
     </div>`;
 }
