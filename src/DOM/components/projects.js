@@ -2,7 +2,7 @@ import App from '../../services/app';
 
 /*  
   + search bar
-  - 'add new project' button
+  + 'add new project' button
   + empty projects container 
   - onChange event to search the projects
   - onClick Create event for the 'add new project' button
@@ -19,12 +19,18 @@ function appendHTML() {
   <div class="text-center my-3">
 
     <h1 class="my-5">Projects</h1>
+
     <div class="row m-3">
       <input type="text" placeholder="Search project">
     </div>
 
+    <div id="new-project" class="text-secondary border rounded m-4 p-1">
+      Add new project
+    </div>
+
     <div id="projects" class='text-start mx-3'>  
     </div>
+
   </div>
   `;
 }
@@ -38,9 +44,9 @@ function appendHTML() {
   - onClick Read Update Delete events 
 */
 function createDOMProjectElement(name, id) {
-  return `<div class='row'>
+  return `<div id='${id}' class='row'>
       <div class="col">${name}</div>
-      <div id='${id}' class="col-auto">
+      <div class="col-auto">
         <i class="bi bi-box-arrow-in-right"></i>
       </div>
       <div class="col-auto">
@@ -67,7 +73,10 @@ function appendProjects() {
   projects.innerHTML = projectElements;
 }
 
+// function createEventListeners() {}
+
 export function renderProjectsPage() {
   appendHTML();
   appendProjects();
+  // createEventListeners();
 }
