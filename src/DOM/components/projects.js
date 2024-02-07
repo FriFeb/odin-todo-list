@@ -1,17 +1,5 @@
 import App from '../../services/app';
 
-/*  
-  + search bar
-  + 'add new project' button
-  + empty projects container 
-  - onChange event to search the projects
-  - onClick Create event for the 'add new project' button
-    Form appears in projects container:
-      Name input field with default name
-      2 buttons 'create' and 'cancel'
-        on cancel - delete this form from the DOM
-        on create - append new project with provided name
-*/
 function appendHTML() {
   const main = document.getElementById('main');
 
@@ -35,14 +23,12 @@ function appendHTML() {
   `;
 }
 
-/*  
-  + title
-  + id of a project as an index in the Projects obj
-  + read (icon that opens tasks)
-  + update (edit icon that allows to edit proj title)
-  + delete (x icon that deletes proj)
-  - onClick Read Update Delete events 
-*/
+function getProjectNames() {
+  App.fetchProjects();
+
+  return App.getProjects().map((project) => project.title);
+}
+
 function createDOMProjectElement(name, id) {
   return `<div id='${id}' class='row'>
       <div class="col">${name}</div>
@@ -58,21 +44,31 @@ function createDOMProjectElement(name, id) {
     </div>`;
 }
 
-function appendProjects() {
-  App.fetchProjects();
+function getProjectElements() {
+  const projectNames = getProjectNames();
 
-  const projectNames = App.getProjects().map((project) => project.title);
-
-  const projectElements = [];
-
-  projectNames.forEach((name, id) => {
-    projectElements.push(createDOMProjectElement(name, id));
-  });
-
-  const projects = document.getElementById('projects');
-  projects.innerHTML = projectElements;
+  return projectNames.map((name, index) =>
+    createDOMProjectElement(name, index)
+  );
 }
 
+function appendProjects() {
+  const projects = document.getElementById('projects');
+
+  projects.innerHTML = getProjectElements();
+}
+
+/*
+  - onChange event to search the projects
+  - onClick Create event for the 'add new project' button
+    Form appears in projects container:
+      Name input field with default name
+      2 buttons 'create' and 'cancel'
+        on cancel - delete this form from the DOM
+        on create - append new project with provided name
+  
+  - onClick Read Update Delete project 
+*/
 // function createEventListeners() {}
 
 export function renderProjectsPage() {
