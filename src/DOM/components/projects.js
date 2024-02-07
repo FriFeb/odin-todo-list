@@ -3,7 +3,7 @@ import App from '../../services/app';
 function appendHTML() {
   const main = document.getElementById('main');
 
-  main.innerHTML = ` 
+  main.innerHTML = `
   <div class="text-center my-3">
 
     <h1 class="my-5">Projects</h1>
@@ -19,8 +19,7 @@ function appendHTML() {
     <div id="projects" class='text-start mx-3'>  
     </div>
 
-  </div>
-  `;
+  </div>`;
 }
 
 function getProjectNames() {
@@ -30,7 +29,7 @@ function getProjectNames() {
 }
 
 function createDOMProjectElement(name, id) {
-  return `<div id='${id}' class='row'>
+  return `<div id='${id}' class='row my-3'>
       <div class="col">${name}</div>
       <div class="col-auto">
         <i class="bi bi-box-arrow-in-right"></i>
@@ -55,7 +54,11 @@ function getProjectElements() {
 function appendProjects() {
   const projects = document.getElementById('projects');
 
-  projects.innerHTML = getProjectElements();
+  const projectElements = getProjectElements();
+
+  projectElements.forEach((projectElement) =>
+    projects.insertAdjacentHTML('beforeend', projectElement)
+  );
 }
 
 /*
