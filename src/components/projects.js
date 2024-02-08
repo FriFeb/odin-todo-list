@@ -40,6 +40,10 @@ class Projects {
   deleteProject(projectIndex) {
     this._projects.splice(projectIndex, 1);
   }
+
+  deleteProjects() {
+    this._projects.length = 0;
+  }
 }
 
 export default new Projects();

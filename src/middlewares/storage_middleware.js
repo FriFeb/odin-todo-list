@@ -13,6 +13,8 @@ export function fetchStorageProjects(Projects) {
 
   if (!storageProjects) return;
 
+  Projects.deleteProjects();
+
   storageProjects._projects.forEach((storageProject) => {
     Projects.createProject(storageProject._title);
 
