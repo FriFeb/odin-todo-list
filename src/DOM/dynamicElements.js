@@ -1,11 +1,5 @@
 import App from '../services/app';
 
-function getProjectNames() {
-  App.fetchProjects();
-
-  return App.getProjects().map((project) => project.title);
-}
-
 function createDOMProjectElement(name, id) {
   return `<div id='${id}' class='row my-3'>
       <div class="col">${name}</div>
@@ -22,7 +16,7 @@ function createDOMProjectElement(name, id) {
 }
 
 function getProjectElements() {
-  const projectNames = getProjectNames();
+  const projectNames = App.getProjectNames();
 
   return projectNames.map((name, index) =>
     createDOMProjectElement(name, index)

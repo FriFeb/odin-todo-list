@@ -28,6 +28,11 @@ export default class App {
     return project;
   }
 
+  static getProjectNames() {
+    this.fetchProjects();
+    return this.getProjects().map((project) => project.title);
+  }
+
   static setProjectTitle(title, projectIndex) {
     Projects.setProjectTitle(title, projectIndex);
 
