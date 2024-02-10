@@ -29,7 +29,7 @@ function getProjectElements() {
   );
 }
 
-export function renderProjects() {
+export function renderProjectElements() {
   const projects = document.getElementById('projects');
 
   projects.innerHTML = '';
