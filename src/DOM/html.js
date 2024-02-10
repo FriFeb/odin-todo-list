@@ -9,7 +9,7 @@ export function renderProjectsHTML() {
     </h1>
 
     <div class="row m-3">
-      <input type="text" placeholder="Search project">
+      <input id='search-project' type="text" placeholder="Search project">
     </div>
 
     <div id="new-project" class="text-secondary border rounded m-4 p-1">

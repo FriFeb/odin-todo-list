@@ -1,3 +1,4 @@
+import { searchProject } from './components/projectsPage/search';
 import {
   initElements,
   toggleNewProjectForm,
@@ -19,6 +20,7 @@ import {
 */
 
 export function addProjectsEventListeners() {
+  searchProject();
   initElements();
   toggleNewProjectForm();
   closeNewProjectForm();
