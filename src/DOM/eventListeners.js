@@ -1,4 +1,4 @@
-import { searchProject } from './components/projectsPage/search';
+import { searchProject } from './components/projectsPage/searchProject';
 import {
   initElements,
   toggleNewProjectForm,
@@ -6,6 +6,7 @@ import {
   addNewProject,
   validateNewProjectName,
 } from './components/projectsPage/newProjectForm';
+import { deleteProject } from './components/projectsPage/projectElement';
 
 /*
   + onChange event to search the projects
@@ -18,7 +19,7 @@ import {
         +  on create - append new project with provided name
       + validation 
   
-  - onClick Read Update Delete project 
+  - onClick Read Update --Delete-- project 
 */
 
 export function addProjectsEventListeners() {
@@ -28,4 +29,5 @@ export function addProjectsEventListeners() {
   closeNewProjectForm();
   addNewProject();
   validateNewProjectName();
+  deleteProject();
 }
