@@ -38,6 +38,8 @@ class Projects {
   }
 
   deleteProject(projectIndex) {
+    if (!projectIndex) return;
+
     this._projects.splice(projectIndex, 1);
   }
 

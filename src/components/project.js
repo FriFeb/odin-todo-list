@@ -46,6 +46,8 @@ export default class Project {
   }
 
   deleteTask(taskIndex) {
+    if (!taskIndex) return;
+
     this._tasks.splice(taskIndex, 1);
   }
 }
