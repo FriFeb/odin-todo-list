@@ -6,7 +6,10 @@ import {
   addNewProject,
   validateNewProjectName,
 } from './components/projectsPage/newProjectForm';
-import { deleteProject } from './components/projectsPage/projectElement';
+import {
+  updateProject,
+  deleteProject,
+} from './components/projectsPage/projectElement';
 
 /*
   + onChange event to search the projects
@@ -32,5 +35,6 @@ export function addProjectsEventListeners() {
   closeNewProjectForm();
   addNewProject();
   validateNewProjectName();
+  updateProject();
   deleteProject();
 }
