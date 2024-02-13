@@ -19,7 +19,10 @@ import { deleteProject } from './components/projectsPage/projectElement';
         +  on create - append new project with provided name
       + validation 
   
-  - onClick Read Update --Delete-- project 
+  - Project:
+    - Read 
+    - Update 
+    + Delete 
 */
 
 export function addProjectsEventListeners() {

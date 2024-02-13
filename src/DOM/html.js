@@ -31,7 +31,7 @@ export function renderProjectsHTML() {
       </div>
 
       <button id="new-project-add" class="col-2 btn btn-light">Add</button>
-      <button type="reset" id="new-project-close" class="col-2 btn btn-dark">Close</button>
+      <button id="new-project-close" class="col-2 btn btn-dark">Close</button>
 
     </form>
 

@@ -29,6 +29,12 @@ function resetFormElementsValidity() {
   resetValidity(input);
 }
 
+function resetForm() {
+  toggleForm();
+  clearFormElementsFields();
+  resetFormElementsValidity();
+}
+
 export function initElements() {
   btn = document.getElementById('new-project');
   form = document.getElementById('new-project-form');
@@ -46,9 +52,7 @@ export function toggleNewProjectForm() {
 
 export function closeNewProjectForm() {
   closeBtn.addEventListener('click', () => {
-    toggleForm();
-
-    resetFormElementsValidity();
+    resetForm();
   });
 }
 
@@ -56,21 +60,21 @@ export function addNewProject() {
   addBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    setFormElementsValidity();
-
-    if (!form.checkValidity()) return;
+    if (!form.checkValidity()) {
+      setFormElementsValidity();
+      return;
+    }
 
     const projectName = input.value;
     App.createProject(projectName);
 
-    toggleForm();
-    clearFormElementsFields();
-    resetFormElementsValidity();
+    resetForm();
 
     renderProjectElements();
   });
 }
 
+// focusout event fires after submit button click (enterKey)
 export function validateNewProjectName() {
   input.addEventListener('focusout', () => {
     setInputValidity();
