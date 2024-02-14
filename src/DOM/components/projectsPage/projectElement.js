@@ -1,5 +1,9 @@
 import App from '../../../services/app';
-import { renderProjectElements } from '../../dynamicElements';
+import {
+  renderProjectElements,
+  renderTaskElements,
+} from '../../dynamicElements';
+import { renderTasksHTML } from '../../html';
 
 function getProjectId(targetProject) {
   return targetProject.closest('.row').id;
@@ -22,6 +26,18 @@ function createProjectNameInput(text, targetProjectId) {
   });
 
   return input;
+}
+
+export function readProject() {
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.read')) return;
+
+    const projectId = getProjectId(event.target);
+    App.getProject(projectId);
+
+    renderTasksHTML();
+    renderTaskElements();
+  });
 }
 
 export function updateProject() {

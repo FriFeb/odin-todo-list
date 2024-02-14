@@ -11,10 +11,6 @@ function createDOMProjectElement(name, id) {
         <i class="bi bi-trash3"></i>
       </div>
     </div>`;
-
-  //   <div class="col-auto update">
-  //   <i class="bi bi-pencil"></i>
-  //   </div>
 }
 
 function getProjectElements() {
@@ -34,5 +30,35 @@ export function renderProjectElements() {
 
   projectElements.forEach((projectElement) =>
     projects.insertAdjacentHTML('beforeend', projectElement)
+  );
+}
+
+function createDOMTaskElement(name, id) {
+  return `<div id='${id}' class='row my-3'>
+      <div class="col task-name">${name}</div>
+      <div class="col-auto read">
+        <i class="bi bi-box-arrow-in-right"></i>
+      </div>
+      <div class="col-auto delete">
+        <i class="bi bi-trash3"></i>
+      </div>
+    </div>`;
+}
+
+function getTaskElements() {
+  const taskNames = App.getCurrentProjectTasksNames();
+
+  return taskNames.map((name, index) => createDOMTaskElement(name, index));
+}
+
+export function renderTaskElements() {
+  const tasks = document.getElementById('tasks');
+
+  tasks.innerHTML = '';
+
+  const taskElements = getTaskElements();
+
+  taskElements.forEach((taskElement) =>
+    tasks.insertAdjacentHTML('beforeend', taskElement)
   );
 }

@@ -9,6 +9,7 @@ import {
 import {
   updateProject,
   deleteProject,
+  readProject,
 } from './components/projectsPage/projectElement';
 
 /*
@@ -22,9 +23,9 @@ import {
         +  on create - append new project with provided name
       + validation 
   
-  - Project:
-    - Read 
-    - Update 
+  + Project:
+    + Read 
+    + Update 
     + Delete 
 */
 
@@ -35,6 +36,7 @@ export function addProjectsEventListeners() {
   closeNewProjectForm();
   addNewProject();
   validateNewProjectName();
+  readProject();
   updateProject();
   deleteProject();
 }
