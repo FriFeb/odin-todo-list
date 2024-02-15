@@ -61,11 +61,6 @@ export default class App {
     return currentProject.getTasks();
   }
 
-  static getCurrentProjectTasksNames() {
-    this.fetchProjects();
-    return this.getCurrentProjectTasks().map((task) => task.title);
-  }
-
   static getCurrentProjectTask(taskIndex) {
     const currentProject = Projects.getCurrentProject();
     return currentProject.getTask(taskIndex);

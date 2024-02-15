@@ -1,16 +1,16 @@
-import { searchProject } from './components/projectsPage/searchProject';
+import { searchProject } from './eventListeners/projectsPage/searchProject';
 import {
   initElements,
   toggleNewProjectForm,
   closeNewProjectForm,
   addNewProject,
   validateNewprojectTitle as validateNewProjectTitle,
-} from './components/projectsPage/newProjectForm';
+} from './eventListeners/projectsPage/newProjectForm';
 import {
   updateProject,
   deleteProject,
   readProject,
-} from './components/projectsPage/projectElement';
+} from './eventListeners/projectsPage/projectElement';
 
 export function addProjectsEventListeners() {
   searchProject();
