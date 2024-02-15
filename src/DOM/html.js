@@ -20,12 +20,12 @@ export function renderProjectsHTML() {
       <div class="row align-items-center my-3">
 
         <div class="col-auto">
-          <label for="new-project-name" class="form-label">Name</label>
+          <label for="new-project-title" class="form-label">Name</label>
         </div>
 
         <div class="col">
-          <input type="text" class="form-control" id="new-project-name" minlength="3" required>
-          <div id="new-project-name-feedback" class="invalid-feedback"></div>
+          <input type="text" class="form-control" id="new-project-title" minlength="3" required>
+          <div id="new-project-title-feedback" class="invalid-feedback"></div>
         </div>
 
       </div>

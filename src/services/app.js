@@ -28,7 +28,7 @@ export default class App {
     return project;
   }
 
-  static getProjectNames() {
+  static getProjectTitles() {
     this.fetchProjects();
     return this.getProjects().map((project) => project.title);
   }

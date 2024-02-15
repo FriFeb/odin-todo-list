@@ -4,7 +4,7 @@ import {
   toggleNewProjectForm,
   closeNewProjectForm,
   addNewProject,
-  validateNewProjectName,
+  validateNewprojectTitle as validateNewProjectTitle,
 } from './components/projectsPage/newProjectForm';
 import {
   updateProject,
@@ -12,31 +12,33 @@ import {
   readProject,
 } from './components/projectsPage/projectElement';
 
-/*
-  + onChange event to search the projects
-
-  + onClick Create event for the 'add new project' button
-    + Form appears in projects container:
-      + project's name field
-      + 2 buttons 'create' and 'cancel'
-        +  on cancel - delete this form from the DOM
-        +  on create - append new project with provided name
-      + validation 
-  
-  + Project:
-    + Read 
-    + Update 
-    + Delete 
-*/
-
 export function addProjectsEventListeners() {
   searchProject();
   initElements();
   toggleNewProjectForm();
   closeNewProjectForm();
   addNewProject();
-  validateNewProjectName();
+  validateNewProjectTitle();
   readProject();
   updateProject();
   deleteProject();
 }
+
+/*
+  - Search of the tasks
+
+  - Add new task
+    - Form:
+      - task name 
+      - task description
+      - task priority      
+
+      - 2 buttons 'add' and 'cancel'
+        -  on cancel - hide the form
+        -  on add - append new task with provided name, desc, priority
+      - validation 
+  
+  - Task:
+    - Update 
+    - Delete 
+*/

@@ -1,8 +1,8 @@
 import App from '../../../services/app';
 
-function hideRedundantProjects(projectNames, searchName) {
-  projectNames.forEach((projectName, index) => {
-    if (!projectName.toLowerCase().includes(searchName.toLowerCase().trim())) {
+function hideRedundantProjects(projectTitles, searchName) {
+  projectTitles.forEach((projectTitle, index) => {
+    if (!projectTitle.toLowerCase().includes(searchName.toLowerCase().trim())) {
       document.getElementById(index).hidden = true;
     } else {
       document.getElementById(index).hidden = false;
@@ -13,9 +13,9 @@ function hideRedundantProjects(projectNames, searchName) {
 export function searchProject() {
   const input = document.getElementById('search-project');
 
-  const projectNames = App.getProjectNames();
+  const projectTitles = App.getProjectTitles();
 
   input.addEventListener('input', () => {
-    hideRedundantProjects(projectNames, input.value);
+    hideRedundantProjects(projectTitles, input.value);
   });
 }

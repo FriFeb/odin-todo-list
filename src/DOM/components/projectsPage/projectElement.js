@@ -9,12 +9,12 @@ function getProjectId(targetProject) {
   return targetProject.closest('.row').id;
 }
 
-function updateProjectName(name, id) {
+function updateprojectTitle(name, id) {
   App.setProjectTitle(name, id);
   renderProjectElements();
 }
 
-function createProjectNameInput(text, targetProjectId) {
+function createProjectTitleInput(text, targetProjectId) {
   const input = document.createElement('input');
   input.classList.add('col');
   input.style.backgroundColor = '#212529';
@@ -22,7 +22,7 @@ function createProjectNameInput(text, targetProjectId) {
   input.value = text;
 
   input.addEventListener('change', () => {
-    updateProjectName(input.value, targetProjectId);
+    updateprojectTitle(input.value, targetProjectId);
   });
 
   return input;
@@ -42,16 +42,16 @@ export function readProject() {
 
 export function updateProject() {
   document.addEventListener('click', (event) => {
-    const projectNameElement = event.target.closest('.project-name');
-    if (!projectNameElement) return;
+    const projectTitleElement = event.target.closest('.project-title');
+    if (!projectTitleElement) return;
 
-    const projectNameInput = createProjectNameInput(
-      projectNameElement.innerText,
+    const projectTitleInput = createProjectTitleInput(
+      projectTitleElement.innerText,
       getProjectId(event.target)
     );
 
-    projectNameElement.replaceWith(projectNameInput);
-    projectNameInput.focus();
+    projectTitleElement.replaceWith(projectTitleInput);
+    projectTitleInput.focus();
   });
 }
 

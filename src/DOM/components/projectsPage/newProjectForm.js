@@ -38,8 +38,8 @@ function resetForm() {
 export function initElements() {
   btn = document.getElementById('new-project');
   form = document.getElementById('new-project-form');
-  input = document.getElementById('new-project-name');
-  inputFeedback = document.getElementById('new-project-name-feedback');
+  input = document.getElementById('new-project-title');
+  inputFeedback = document.getElementById('new-project-title-feedback');
   closeBtn = document.getElementById('new-project-close');
   addBtn = document.getElementById('new-project-add');
 }
@@ -65,8 +65,8 @@ export function addNewProject() {
       return;
     }
 
-    const projectName = input.value;
-    App.createProject(projectName);
+    const projectTitle = input.value;
+    App.createProject(projectTitle);
 
     resetForm();
 
@@ -75,7 +75,7 @@ export function addNewProject() {
 }
 
 // focusout event fires after submit button click (enterKey)
-export function validateNewProjectName() {
+export function validateNewprojectTitle() {
   input.addEventListener('focusout', () => {
     setInputValidity();
   });
