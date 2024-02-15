@@ -1,15 +1,12 @@
 import App from '../../../services/app';
-import {
-  renderProjectElements,
-  renderTaskElements,
-} from '../../dynamicElements';
-import { renderTasksHTML } from '../../html';
+import { renderProjectElements } from '../../dynamicElements';
+import { renderTasksPage } from '../../tasksPage';
 
 function getProjectId(targetProject) {
   return targetProject.closest('.row').id;
 }
 
-function updateprojectTitle(name, id) {
+function updateProjectTitle(name, id) {
   App.setProjectTitle(name, id);
   renderProjectElements();
 }
@@ -22,7 +19,7 @@ function createProjectTitleInput(text, targetProjectId) {
   input.value = text;
 
   input.addEventListener('change', () => {
-    updateprojectTitle(input.value, targetProjectId);
+    updateProjectTitle(input.value, targetProjectId);
   });
 
   return input;
@@ -35,8 +32,7 @@ export function readProject() {
     const projectId = getProjectId(event.target);
     App.getProject(projectId);
 
-    renderTasksHTML();
-    renderTaskElements();
+    renderTasksPage();
   });
 }
 
