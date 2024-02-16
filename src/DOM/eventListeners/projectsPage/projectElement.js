@@ -1,6 +1,6 @@
 import App from '../../../services/app';
 import { renderProjectElements } from '../../dynamicElements';
-import { renderTasksPage } from '../../tasksPage';
+import { renderTasksPage } from '../../pages/tasksPage';
 
 function getProjectId(targetProject) {
   return targetProject.closest('.row').id;

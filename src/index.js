@@ -1,3 +1,3 @@
-import { renderProjectsPage } from './DOM/projectsPage';
+import { renderProjectsPage } from './DOM/pages/projectsPage';
 
 renderProjectsPage();

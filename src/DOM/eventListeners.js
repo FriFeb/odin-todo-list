@@ -11,6 +11,7 @@ import {
   deleteProject,
   readProject,
 } from './eventListeners/projectsPage/projectElement';
+import { searchTasks } from './eventListeners/tasksPage/searchTask';
 
 export function addProjectsEventListeners() {
   searchProject();
@@ -25,7 +26,7 @@ export function addProjectsEventListeners() {
 }
 
 /*
-  - Search of the tasks
+  + Search of the tasks
 
   - Add new task
     - Form:
@@ -42,3 +43,7 @@ export function addProjectsEventListeners() {
     - Update 
     - Delete 
 */
+
+export function addTasksEventListeners() {
+  searchTasks();
+}
