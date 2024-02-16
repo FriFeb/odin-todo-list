@@ -20,7 +20,7 @@ export function renderProjectsHTML() {
       <div class="row align-items-center my-3">
 
         <div class="col-auto">
-          <label for="new-project-title" class="form-label">Name</label>
+          <label for="new-project-title" class="form-label">Title</label>
         </div>
 
         <div class="col">
@@ -31,7 +31,7 @@ export function renderProjectsHTML() {
       </div>
 
       <button id="new-project-add" class="col-2 btn btn-light">Add</button>
-      <button id="new-project-close" class="col-2 btn btn-dark">Close</button>
+      <button type="reset" id="new-project-close" class="col-2 btn btn-dark">Close</button>
 
     </form>
 
@@ -60,18 +60,18 @@ export function renderTasksHTML() {
     <div class="row align-items-center my-3">
 
       <div class="col-auto">
-        <label for="new-task-name" class="form-label">Name</label>
+        <label for="new-task-title" class="form-label">Title</label>
       </div>
 
       <div class="col">
-        <input type="text" class="form-control" id="new-task-name" minlength="3" required>
-        <div id="new-task-name-feedback" class="invalid-feedback"></div>
+        <input type="text" class="form-control" id="new-task-title" name="title" minlength="3" required>
+        <div id="new-task-title-feedback" class="invalid-feedback"></div>
       </div>
 
     </div>
 
-    <button id="new-task-add" class="col-2 btn btn-light">Add</button>
-    <button id="new-task-close" class="col-2 btn btn-dark">Close</button>
+    <button id="new-task-add" class="col-2 btn btn-light" name="add">Add</button>
+    <button type="reset" id="new-task-close" class="col-2 btn btn-dark" name="close">Close</button>
 
   </form>
 

@@ -1,10 +1,10 @@
 import { searchProject } from './eventListeners/projectsPage/searchProject';
 import {
-  initElements,
+  initProjectElements,
   toggleNewProjectForm,
   closeNewProjectForm,
   addNewProject,
-  validateNewprojectTitle as validateNewProjectTitle,
+  validateNewProjectTitle as validateNewProjectTitle,
 } from './eventListeners/projectsPage/newProjectForm';
 import {
   updateProject,
@@ -12,10 +12,17 @@ import {
   readProject,
 } from './eventListeners/projectsPage/projectElement';
 import { searchTasks } from './eventListeners/tasksPage/searchTask';
+import {
+  addNewTask,
+  closeNewTaskForm,
+  initTaskElements,
+  toggleNewTaskForm,
+  validateNewTaskTitle,
+} from './eventListeners/tasksPage/newTaskForm';
 
 export function addProjectsEventListeners() {
   searchProject();
-  initElements();
+  initProjectElements();
   toggleNewProjectForm();
   closeNewProjectForm();
   addNewProject();
@@ -46,4 +53,9 @@ export function addProjectsEventListeners() {
 
 export function addTasksEventListeners() {
   searchTasks();
+  initTaskElements();
+  toggleNewTaskForm();
+  closeNewTaskForm();
+  addNewTask();
+  validateNewTaskTitle();
 }

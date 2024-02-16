@@ -6,6 +6,7 @@ let btn, form, input, inputFeedback, closeBtn, addBtn;
 
 function toggleForm() {
   form.toggleAttribute('hidden');
+  input.focus();
 }
 
 function clearFormElementsFields() {
@@ -35,7 +36,7 @@ function resetForm() {
   resetFormElementsValidity();
 }
 
-export function initElements() {
+export function initProjectElements() {
   btn = document.getElementById('new-project');
   form = document.getElementById('new-project-form');
   input = document.getElementById('new-project-title');
@@ -75,7 +76,7 @@ export function addNewProject() {
 }
 
 // focusout event fires after submit button click (enterKey)
-export function validateNewprojectTitle() {
+export function validateNewProjectTitle() {
   input.addEventListener('focusout', () => {
     setInputValidity();
   });
