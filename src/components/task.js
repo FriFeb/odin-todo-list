@@ -34,6 +34,10 @@ export default class Task {
     }
   }
 
+  get priorityIndex() {
+    return this._priorityIndex;
+  }
+
   get priorities() {
     return this._priorities;
   }

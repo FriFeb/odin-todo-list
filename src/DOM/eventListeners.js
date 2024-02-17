@@ -37,7 +37,7 @@ export function addProjectsEventListeners() {
 
   - Add new task
     - Form:
-      - task name 
+      + task name 
       - task description
       - task priority      
 
