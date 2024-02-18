@@ -57,25 +57,50 @@ export function renderTasksHTML() {
     </div>
 
     <form id="new-task-form" class="row justify-content-center align-items-center my-5 p-1" hidden>
-    <div class="row align-items-center my-3">
+      <div class="row align-items-center my-3">
 
-      <div class="col-auto">
-        <label for="new-task-title" class="form-label">Title</label>
+        <div class="row align-items-center my-3">
+          <div class="col-4">
+            <label for="new-task-title" class="form-label">Title*</label>
+          </div>
+          
+          <div class="col">
+            <input type="text" class="form-control" id="new-task-title" name="title" minlength="3" required>
+            <div id="new-task-title-feedback" class="invalid-feedback"></div>
+          </div>
+        </div>
+
+        <div class="row align-items-center my-3">
+          <div class="col-4">
+            <label for="new-task-description" class="form-label">Description</label>
+          </div>
+          
+          <div class="col">
+            <textarea class="form-control" id="new-task-description" name="description"></textarea>
+          </div>
+        </div>
+
       </div>
 
-      <div class="col">
-        <input type="text" class="form-control" id="new-task-title" name="title" minlength="3" required>
-        <div id="new-task-title-feedback" class="invalid-feedback"></div>
-      </div>
+      <button id="new-task-add" class="col-2 btn btn-light" name="add">Add</button>
+      <button type="reset" id="new-task-close" class="col-2 btn btn-dark" name="close">Close</button>
 
-    </div>
-
-    <button id="new-task-add" class="col-2 btn btn-light" name="add">Add</button>
-    <button type="reset" id="new-task-close" class="col-2 btn btn-dark" name="close">Close</button>
-
-  </form>
+    </form>
 
     <div id="tasks" class='text-start mx-3'></div>
 
   </div>`;
+}
+
+{
+  /* <div class="col-auto row text-start">
+<label for="new-task-title" class="col-12 my-3 form-label">Title</label>
+<label for="new-task-description" class="col-12 my-3 form-label">Description</label>
+</div>
+
+<div class="col">
+<input type="text" class="my-3 form-control" id="new-task-title" name="title" minlength="3" required>
+<div id="new-task-title-feedback" class="invalid-feedback"></div>
+<input type="text" class="my-3 form-control" id="new-task-description" name="description" minlength="3" required>
+</div> */
 }

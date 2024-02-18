@@ -63,7 +63,9 @@ export function addNewTask() {
     }
 
     const taskTitle = form.title.value;
-    App.createCurrentProjectTask(taskTitle);
+    const taskDescription = form.description.value;
+
+    App.createCurrentProjectTask(taskTitle, taskDescription);
 
     resetForm();
 
