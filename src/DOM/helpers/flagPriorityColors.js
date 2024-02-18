@@ -1,1 +1,6 @@
-export const PRIORITY_COLORS = ['red', 'yellow', 'deepskyblue', 'currentColor'];
+export const TASK_PRIORITY_COLORS = [
+  'red',
+  'yellow',
+  'deepskyblue',
+  'currentColor',
+];
