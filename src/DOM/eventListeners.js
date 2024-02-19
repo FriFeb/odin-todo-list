@@ -35,15 +35,15 @@ export function addProjectsEventListeners() {
 /*
   + Search of the tasks
 
-  - Add new task
-    - Form:
+  + Add new task
+    + Form:
       + task name 
       + task description
-      - task priority      
+      + task priority      
 
-      - 2 buttons 'add' and 'cancel'
+      + 2 buttons 'add' and 'cancel'
         +  on cancel - hide the form
-        -  on add - append new task with provided name, desc, priority
+        +  on add - append new task with provided name, desc, priority
       + validation 
   
   - Task:

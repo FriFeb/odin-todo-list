@@ -80,6 +80,19 @@ export function renderTasksHTML() {
           </div>
         </div>
 
+        <div class="row align-items-center my-3">
+          <div class="col-4">
+            <label for="new-task-priority" class="form-label">Priority</label>
+          </div>
+          
+          <select class="col form-select mx-2" id="new-task-priority" name="priority">
+            <option value="0">High</option>
+            <option value="1">Middle</option>
+            <option value="2">Low</option>
+            <option value="3" selected>Common</option>
+          </select>
+        </div>
+
       </div>
 
       <button id="new-task-add" class="col-2 btn btn-light" name="add">Add</button>
@@ -90,17 +103,4 @@ export function renderTasksHTML() {
     <div id="tasks" class='text-start mx-3'></div>
 
   </div>`;
-}
-
-{
-  /* <div class="col-auto row text-start">
-<label for="new-task-title" class="col-12 my-3 form-label">Title</label>
-<label for="new-task-description" class="col-12 my-3 form-label">Description</label>
-</div>
-
-<div class="col">
-<input type="text" class="my-3 form-control" id="new-task-title" name="title" minlength="3" required>
-<div id="new-task-title-feedback" class="invalid-feedback"></div>
-<input type="text" class="my-3 form-control" id="new-task-description" name="description" minlength="3" required>
-</div> */
 }

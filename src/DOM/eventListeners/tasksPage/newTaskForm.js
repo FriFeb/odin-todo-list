@@ -10,6 +10,8 @@ function toggleForm() {
 
 function clearFormElementsFields() {
   form.title.value = '';
+  form.description.value = '';
+  form.priority.value = '3';
 }
 
 function setTitleValidity() {
@@ -33,6 +35,10 @@ function resetForm() {
   toggleForm();
   clearFormElementsFields();
   resetFormElementsValidity();
+}
+
+function createNewTask(taskTitle, taskDescription, taskPriority) {
+  App.createCurrentProjectTask(taskTitle, taskDescription, taskPriority);
 }
 
 export function initTaskElements() {
@@ -64,8 +70,9 @@ export function addNewTask() {
 
     const taskTitle = form.title.value;
     const taskDescription = form.description.value;
+    const taskPriority = form.priority.value;
 
-    App.createCurrentProjectTask(taskTitle, taskDescription);
+    createNewTask(taskTitle, taskDescription, taskPriority);
 
     resetForm();
 
