@@ -25,7 +25,7 @@ function createProjectTitleInput(text, targetProjectId) {
   return input;
 }
 
-export function readProject() {
+export function openProjectTasks() {
   document.addEventListener('click', (event) => {
     if (!event.target.closest('.read')) return;
 
@@ -36,7 +36,7 @@ export function readProject() {
   });
 }
 
-export function updateProject() {
+export function changeProjectTitle() {
   document.addEventListener('click', (event) => {
     const projectTitleElement = event.target.closest('.project-title');
     if (!projectTitleElement) return;

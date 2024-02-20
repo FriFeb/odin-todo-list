@@ -7,9 +7,9 @@ import {
   validateNewProjectTitle as validateNewProjectTitle,
 } from './eventListeners/projectsPage/newProjectForm';
 import {
-  updateProject,
+  changeProjectTitle,
   deleteProject,
-  readProject,
+  openProjectTasks,
 } from './eventListeners/projectsPage/projectElement';
 import { searchTasks } from './eventListeners/tasksPage/searchTask';
 import {
@@ -27,8 +27,8 @@ export function addProjectsEventListeners() {
   closeNewProjectForm();
   addNewProject();
   validateNewProjectTitle();
-  readProject();
-  updateProject();
+  openProjectTasks();
+  changeProjectTitle();
   deleteProject();
 }
 
@@ -45,7 +45,7 @@ export function addProjectsEventListeners() {
         +  on cancel - hide the form
         +  on add - append new task with provided name, desc, priority
       + validation 
-  
+   
   - Task:
     - Update 
     - Delete 
