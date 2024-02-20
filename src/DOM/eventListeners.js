@@ -4,22 +4,31 @@ import {
   toggleNewProjectForm,
   closeNewProjectForm,
   addNewProject,
-  validateNewProjectTitle as validateNewProjectTitle,
+  validateNewProjectTitle,
 } from './eventListeners/projectsPage/newProjectForm';
 import {
-  changeProjectTitle,
-  deleteProject,
   initProjectElements,
   openProjectTasks,
+  changeProjectTitle,
+  deleteProject,
 } from './eventListeners/projectsPage/projectElement';
+
 import { searchTasks } from './eventListeners/tasksPage/searchTask';
 import {
-  addNewTask,
-  closeNewTaskForm,
-  initTaskElements,
+  initNewTaskFormElements,
   toggleNewTaskForm,
+  closeNewTaskForm,
+  addNewTask,
   validateNewTaskTitle,
 } from './eventListeners/tasksPage/newTaskForm';
+import {
+  initTaskElements,
+  changeTaskAttribute,
+  deleteTask,
+  changeTaskDescription,
+  changeTaskTitle,
+  changeTaskPriority,
+} from './eventListeners/tasksPage/taskElement';
 
 export function addProjectsEventListeners() {
   // search
@@ -53,9 +62,12 @@ export function addProjectsEventListeners() {
         +  on add - append new task with provided name, desc, priority
       + validation 
    
-  - Task:
-    - Update 
-    - Delete 
+  + Task:
+    + Update 
+      + title
+      + description
+      + priority
+    + Delete 
 */
 
 export function addTasksEventListeners() {
@@ -63,11 +75,18 @@ export function addTasksEventListeners() {
   searchTasks();
 
   // form
-  initTaskElements();
+  initNewTaskFormElements();
   toggleNewTaskForm();
   closeNewTaskForm();
   addNewTask();
   validateNewTaskTitle();
 
   // tasks
+  initTaskElements();
+  // changeTaskAttribute('.task-title');
+  // changeTaskAttribute('.task-description');
+  changeTaskTitle();
+  changeTaskDescription();
+  changeTaskPriority();
+  deleteTask();
 }

@@ -41,7 +41,7 @@ function createNewTask(taskTitle, taskDescription, taskPriority) {
   App.createCurrentProjectTask(taskTitle, taskDescription, taskPriority);
 }
 
-export function initTaskElements() {
+export function initNewTaskFormElements() {
   btn = document.getElementById('new-task');
   form = document.getElementById('new-task-form');
   titleFeedback = document.getElementById('new-task-title-feedback');
