@@ -2,6 +2,8 @@ import App from '../../../services/app';
 import { renderProjectElements } from '../../dynamicElements';
 import { renderTasksPage } from '../../pages/tasksPage';
 
+let projects;
+
 function getProjectId(targetProject) {
   return targetProject.closest('.row').id;
 }
@@ -25,8 +27,12 @@ function createProjectTitleInput(text, targetProjectId) {
   return input;
 }
 
+export function initProjectElements() {
+  projects = document.getElementById('projects');
+}
+
 export function openProjectTasks() {
-  document.addEventListener('click', (event) => {
+  projects.addEventListener('click', (event) => {
     if (!event.target.closest('.read')) return;
 
     const projectId = getProjectId(event.target);
@@ -37,7 +43,7 @@ export function openProjectTasks() {
 }
 
 export function changeProjectTitle() {
-  document.addEventListener('click', (event) => {
+  projects.addEventListener('click', (event) => {
     const projectTitleElement = event.target.closest('.project-title');
     if (!projectTitleElement) return;
 
@@ -52,7 +58,7 @@ export function changeProjectTitle() {
 }
 
 export function deleteProject() {
-  document.addEventListener('click', (event) => {
+  projects.addEventListener('click', (event) => {
     if (!event.target.closest('.delete')) return;
 
     const projectId = getProjectId(event.target);

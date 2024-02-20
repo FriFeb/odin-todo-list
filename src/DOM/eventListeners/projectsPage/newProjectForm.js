@@ -36,7 +36,7 @@ function resetForm() {
   resetFormElementsValidity();
 }
 
-export function initProjectElements() {
+export function initNewProjectFormElements() {
   btn = document.getElementById('new-project');
   form = document.getElementById('new-project-form');
   input = document.getElementById('new-project-title');
