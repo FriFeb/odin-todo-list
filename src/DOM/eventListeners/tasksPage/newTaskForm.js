@@ -49,6 +49,7 @@ export function initNewTaskFormElements() {
 
 export function toggleNewTaskForm() {
   btn.addEventListener('click', () => {
+    resetFormElementsValidity();
     toggleForm();
   });
 }

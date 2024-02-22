@@ -47,6 +47,7 @@ export function initNewProjectFormElements() {
 
 export function toggleNewProjectForm() {
   btn.addEventListener('click', () => {
+    resetFormElementsValidity();
     toggleForm();
   });
 }

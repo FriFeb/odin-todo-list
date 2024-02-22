@@ -38,7 +38,7 @@ function createDOMTaskElement(title, description, priorityIndex, id) {
   return `<div id='${id}' class='task row my-3 align-items-center'>
       <div class="row col">
         <div class="col task-title">${title}</div>
-        <div class="col-12 task-description" style="font-size: 0.5rem;">
+        <div class="col-12 task-description" style="font-size: 0.75rem;">
           ${description}
         </div>
       </div>
