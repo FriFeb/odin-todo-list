@@ -22,29 +22,20 @@ function updateTaskPriorityIndex(priorityIndex, id) {
   renderTaskElements();
 }
 
-function createTaskTitleInput(title, targetTaskId) {
+function createTaskAttributeInput(
+  value,
+  className,
+  updateFunction,
+  targetTaskId
+) {
   const input = document.createElement('input');
-  input.classList.add('col');
+  input.classList.add(className);
   input.style.backgroundColor = '#212529';
   input.style.border = 'none';
-  input.value = title;
+  input.value = value;
 
   input.addEventListener('change', () => {
-    updateTaskTitle(input.value, targetTaskId);
-  });
-
-  return input;
-}
-
-function createTaskDescriptionInput(description, targetTaskId) {
-  const input = document.createElement('input');
-  input.classList.add('col-12');
-  input.style.backgroundColor = '#212529';
-  input.style.border = 'none';
-  input.value = description;
-
-  input.addEventListener('change', () => {
-    updateTaskDescription(input.value, targetTaskId);
+    updateFunction(input.value, targetTaskId);
   });
 
   return input;
@@ -54,33 +45,34 @@ export function initTaskElements() {
   tasks = document.getElementById('tasks');
 }
 
-export function changeTaskTitle() {
+export function changeTaskAttribute(attribute) {
   tasks.addEventListener('click', (event) => {
-    const taskTitleElement = event.target.closest('.task-title');
-    if (!taskTitleElement) return;
+    const taskAttributeElement = event.target.closest(attribute);
+    if (!taskAttributeElement) return;
 
-    const taskTitleInput = createTaskTitleInput(
-      taskTitleElement.innerText,
-      getTaskId(event.target)
-    );
+    let taskAttributeInput;
 
-    taskTitleElement.replaceWith(taskTitleInput);
-    taskTitleInput.focus();
-  });
-}
+    switch (attribute) {
+      case '.task-title':
+        taskAttributeInput = createTaskAttributeInput(
+          taskAttributeElement.innerText,
+          'col',
+          updateTaskTitle,
+          getTaskId(event.target)
+        );
+        break;
+      case '.task-description':
+        taskAttributeInput = createTaskAttributeInput(
+          taskAttributeElement.innerText,
+          'col-12',
+          updateTaskDescription,
+          getTaskId(event.target)
+        );
+        break;
+    }
 
-export function changeTaskDescription() {
-  tasks.addEventListener('click', (event) => {
-    const taskDescriptionElement = event.target.closest('.task-description');
-    if (!taskDescriptionElement) return;
-
-    const taskTitleDescription = createTaskDescriptionInput(
-      taskDescriptionElement.innerText,
-      getTaskId(event.target)
-    );
-
-    taskDescriptionElement.replaceWith(taskTitleDescription);
-    taskTitleDescription.focus();
+    taskAttributeElement.replaceWith(taskAttributeInput);
+    taskAttributeInput.focus();
   });
 }
 

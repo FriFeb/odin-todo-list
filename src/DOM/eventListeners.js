@@ -24,10 +24,8 @@ import {
 import {
   initTaskElements,
   changeTaskAttribute,
-  deleteTask,
-  changeTaskDescription,
-  changeTaskTitle,
   changeTaskPriority,
+  deleteTask,
 } from './eventListeners/tasksPage/taskElement';
 
 export function addProjectsEventListeners() {
@@ -48,28 +46,6 @@ export function addProjectsEventListeners() {
   deleteProject();
 }
 
-/*
-  + Search of the tasks
-
-  + Add new task
-    + Form:
-      + task name 
-      + task description
-      + task priority      
-
-      + 2 buttons 'add' and 'cancel'
-        +  on cancel - hide the form
-        +  on add - append new task with provided name, desc, priority
-      + validation 
-   
-  + Task:
-    + Update 
-      + title
-      + description
-      + priority
-    + Delete 
-*/
-
 export function addTasksEventListeners() {
   // search
   searchTasks();
@@ -83,10 +59,8 @@ export function addTasksEventListeners() {
 
   // tasks
   initTaskElements();
-  // changeTaskAttribute('.task-title');
-  // changeTaskAttribute('.task-description');
-  changeTaskTitle();
-  changeTaskDescription();
+  changeTaskAttribute('.task-title');
+  changeTaskAttribute('.task-description');
   changeTaskPriority();
   deleteTask();
 }
